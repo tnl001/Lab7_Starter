@@ -1,6 +1,6 @@
 // main.js
 
-import { Router } from './router.js';
+import { Router } from './Router.js';
 
 const recipes = [
   'https://introweb.tech/assets/json/ghostCookies.json',
@@ -25,6 +25,7 @@ const router = new Router(function () {
    * This will only be two single lines
    * If you did this right, you should see the recipe cards just like last lab
    */
+  console.log("in router!");
   document.querySelector("section.section--recipe-cards").classList.add("shown");
   document.querySelector("section.section--recipe-expand").classList.remove("shown");
 });
@@ -181,9 +182,10 @@ function bindEscKey() {
    * if the escape key is pressed, use your router to navigate() to the 'home'
    * page. This will let us go back to the home page from the detailed page.
    */
+
   document.addEventListener('keydown', (event) => {
-    if (event.altKey == 27) {
-      
+    if (event.key == "Escape") {
+      router.navigate('home');
     }
   });
 }
@@ -207,4 +209,15 @@ function bindPopstate() {
    * so your navigate() function does not add your going back action to the history,
    * creating an infinite loop
    */
+  window.addEventListener('popstate', (event) => {
+    console.log(event.state);
+    console.log(history);
+
+    // if event.state == null then just navigate to home
+    if (event.state != undefined) {
+      router.navigate(event.state["page"], true);
+    } else {
+      router.navigate('home', true);
+    }
+  });
 }
