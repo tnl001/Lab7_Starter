@@ -25,6 +25,8 @@ const router = new Router(function () {
    * This will only be two single lines
    * If you did this right, you should see the recipe cards just like last lab
    */
+  document.querySelector('.section--recipe-cards').classList.add('shown');
+  document.querySelector('.section--recipe-expand').classList.remove('shown');
 });
 
 window.addEventListener('DOMContentLoaded', init);
@@ -117,6 +119,17 @@ function createRecipeCards() {
    * all the recipes. (bonus - add the class 'hidden' to every recipe card with 
    * an index greater  than 2 in your for loop to make show more button functional)
    */
+
+  for (let i = 1; i < recipes.length; i++) {
+    recipeCard.data = recipeData[recipes[i]];
+    router.addPage(recipeData[recipes[i]['page-name']], function() {
+      document.querySelector('.section--recipe-cards').classList.remove('shown');
+      document.querySelector('.section--recipe-expand').classList.add('shown');
+      document.querySelector('recipe-expand').data = recipeData[recipes[i]];
+    });
+    bindRecipeCard(recipeCard, page);
+    document.querySelector('.recipe-cards--wrapper').appendChild(recipeCard);
+  }
 }
 
 /**
