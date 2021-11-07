@@ -95,7 +95,7 @@ export class Router {
     console.log(statePopped);
     if (statePopped != true && window.location.hash != hash) {
       let curr_state = {'page': page};
-      history.pushState(curr_state, '', window.location.origin+window.location.pathname+hash);
+      history.pushState(curr_state, '', window.location.origin+hash);
     }
 
     // 4. Finally, call the stored function for the given page
