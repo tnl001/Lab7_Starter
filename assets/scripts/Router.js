@@ -80,9 +80,9 @@ export class Router {
     // '#ghostCookies'
     let hash;
     if (page == "home") {
-      hash = "";
+      hash = window.location.pathname;
     } else {
-      hash = "#" + page;
+      hash = window.location.pathname + "#" + page;
     }
     
     
@@ -95,7 +95,7 @@ export class Router {
     console.log(statePopped);
     if (statePopped != true && window.location.hash != hash) {
       let curr_state = {'page': page};
-      history.pushState(curr_state, '', window.location.origin+hash);
+      history.pushState(curr_state, '', window.location.origin+window.location.pathname+hash);
     }
 
     // 4. Finally, call the stored function for the given page
