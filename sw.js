@@ -23,7 +23,8 @@ self.addEventListener('install', function (event) {
     'assets/images/icons/3-star.svg',
     'assets/images/icons/4-star.svg',
     'assets/images/icons/5-star.svg',
-    'assets/images/icons/arrow-down.png'
+    'assets/images/icons/arrow-down.png',
+    'favicon.ico'
   ];
 
   // start caching
